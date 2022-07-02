@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Medium2MD",
+  "description": "A simple way to convert a Medium Article to Markdown",
+  "version": "0.0.1",
+  "action": {
+    "default_icon": {
+      "16": "medium2md-logo.png",
+      "48": "medium2md-logo.png",
+      "128": "medium2md-logo.png"
+    },
+    "default_title": "Medium2MD",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "optional_permissions": ["tabs"],
+  "host_permissions": ["https://*/"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
