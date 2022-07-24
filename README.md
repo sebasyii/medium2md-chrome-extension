@@ -27,6 +27,10 @@ $ yarn build
 # Upload dist file to chrome
 ```
 
+## TODO
+
+- [ ] Improving Subpar ScrapingEngine
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

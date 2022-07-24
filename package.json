@@ -5,13 +5,16 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --watch --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "clean": "rimraf dist",
+    "build": "yarn clean && webpack --config webpack.prod.js",
+    "test": "jest"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "framer-motion": "^6.3.15",
+    "node-html-parser": "^5.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -19,9 +22,15 @@
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
+    "@types/chrome": "^0.0.193",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.5",
     "copy-webpack-plugin": "^11.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.2",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0",
     "webpack-merge": "^5.8.0"

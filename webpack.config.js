@@ -4,23 +4,39 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    popup: './src/popup.jsx',
+    popup: path.join(__dirname, 'src/popup.tsx'),
+    background: path.join(__dirname, 'src/background.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
   },
+
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks(chunk) {
+        return chunk.name !== 'background';
+      },
+    },
+  },
+
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
+
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
-        },
+        // use: {
+        //   loader: 'babel-loader',
+        //   options: {
+        //     presets: ['@babel/preset-env', '@babel/preset-react'],
+        //   },
+        // },
+        use: 'ts-loader',
       },
     ],
   },
@@ -30,7 +46,7 @@ module.exports = {
       filename: 'popup.html',
     }),
     new CopyPlugin({
-      patterns: [{ from: 'public' }, { from: 'src/background.js' }, { from: 'src/scrape.js' }],
+      patterns: [{ from: 'public' }, { from: 'src/scrape.js' }],
     }),
   ],
 };
